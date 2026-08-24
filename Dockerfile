@@ -6,7 +6,8 @@ FROM valkey/valkey-admin:latest
 ENV DEPLOYMENT_MODE=Web
 
 ENV VALKEY_AUTH_TYPE="password"
-ENV VALKEY_USERNAME="avnadmin"
+ENV VALKEY_USERNAME="default"
+ENV VALKEY_PORT=6789
 ENV VALKEY_PASSWORD=""
 
 # Optional: cap how large a value Valkey Admin will render in the UI

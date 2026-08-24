@@ -1,0 +1,22 @@
+services:
+  valkey:
+    image: valkey/valkey:latest
+    ports:
+      - "6789:6789"
+    command: ["valkey-server", "--port", "6789"]
+    restart: unless-stopped
+
+  valkey-admin:
+    build: .
+    image: valkey-admin-aiven:latest
+    ports:
+      - "8080:8080"
+    environment:
+      DEPLOYMENT_MODE: Web
+      VALKEY_HOST: valkey
+      VALKEY_PORT: ${VALKEY_PORT:-6789}
+      VALKEY_AUTH_TYPE: ${VALKEY_AUTH_TYPE:-password}
+      VALKEY_USERNAME: ${VALKEY_USERNAME:-default}
+      VALKEY_PASSWORD: ${VALKEY_PASSWORD}
+      KEY_VALUE_SIZE_LIMIT_BYTES: ${KEY_VALUE_SIZE_LIMIT_BYTES:-2048}
+    restart: unless-stopped
