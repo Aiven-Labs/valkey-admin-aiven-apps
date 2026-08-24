@@ -16,7 +16,7 @@ Instructions:
 
 ![Valkey-Admin Environment Variable Locations]()
 
-> [!NOTE:]
+> [!NOTE]
 > You will still need to re-enter this information on the connections page on first load. The information is so that the metrics backend is configured, but has no control of the frontend.
 
 [Aiven Apps]: https://aiven.io/blog/developers-guide-to-aiven-apps
