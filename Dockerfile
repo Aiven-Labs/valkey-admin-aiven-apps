@@ -17,5 +17,8 @@ ENV KEY_VALUE_SIZE_LIMIT_BYTES="2048"
 # split it into VALKEY_HOST/PORT/USERNAME/PASSWORD before starting valkey-admin.
 COPY --chmod=755 entrypoint.sh /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+# Re-declare the base image's CMD — setting a new ENTRYPOINT above clears it
+# otherwise, and we still need it passed through to docker-entrypoint.sh.
+CMD ["node", "apps/server/dist/index.js"]
 
 EXPOSE 8080
