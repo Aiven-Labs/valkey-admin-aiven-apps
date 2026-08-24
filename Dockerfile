@@ -13,4 +13,9 @@ ENV VALKEY_PASSWORD=""
 # Optional: cap how large a value Valkey Admin will render in the UI
 ENV KEY_VALUE_SIZE_LIMIT_BYTES="2048"
 
+# If the platform only gives us a single REDIS_URL (e.g. rediss://default:pass@host:port),
+# split it into VALKEY_HOST/PORT/USERNAME/PASSWORD before starting valkey-admin.
+COPY --chmod=755 entrypoint.sh /usr/local/bin/entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
 EXPOSE 8080

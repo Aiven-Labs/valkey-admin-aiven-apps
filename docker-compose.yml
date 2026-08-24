@@ -14,10 +14,15 @@ services:
       - "8080:8080"
     environment:
       DEPLOYMENT_MODE: Web
-      VALKEY_HOST: valkey
+      # Either set REDIS_URL (e.g. rediss://default:password@host:port) and
+      # entrypoint.sh will split it into the VALKEY_* vars below, or leave it
+      # unset and provide the VALKEY_* vars directly.
+      REDIS_URL: ${REDIS_URL:-}
+      VALKEY_HOST: ${VALKEY_HOST:-valkey}
       VALKEY_PORT: ${VALKEY_PORT:-6789}
       VALKEY_AUTH_TYPE: ${VALKEY_AUTH_TYPE:-password}
       VALKEY_USERNAME: ${VALKEY_USERNAME:-default}
-      VALKEY_PASSWORD: ${VALKEY_PASSWORD}
+      VALKEY_PASSWORD: ${VALKEY_PASSWORD:-}
+      VALKEY_TLS: "true"
       KEY_VALUE_SIZE_LIMIT_BYTES: ${KEY_VALUE_SIZE_LIMIT_BYTES:-2048}
     restart: unless-stopped
