@@ -7,8 +7,9 @@ services:
     restart: unless-stopped
 
   valkey-admin:
-    build: .
-    image: valkey-admin-aiven:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     environment:
