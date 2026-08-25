@@ -9,6 +9,7 @@ ENV VALKEY_AUTH_TYPE="password"
 ENV VALKEY_USERNAME="default"
 ENV VALKEY_PORT=6789
 ENV VALKEY_PASSWORD=""
+ENV VALKEY_TLS="true"
 
 # Optional: cap how large a value Valkey Admin will render in the UI
 ENV KEY_VALUE_SIZE_LIMIT_BYTES="2048"
